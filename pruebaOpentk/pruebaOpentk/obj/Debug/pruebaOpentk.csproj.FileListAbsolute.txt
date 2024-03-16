@@ -1,0 +1,13 @@
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.Properties.Resources.resources
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.csproj.GenerateResource.cache
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\bin\Debug\pruebaOpentk.exe.config
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\bin\Debug\pruebaOpentk.exe
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\bin\Debug\pruebaOpentk.pdb
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\bin\Debug\OpenTK.dll
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\bin\Debug\OpenTK.pdb
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\bin\Debug\OpenTK.xml
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.csproj.CopyComplete
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.exe
+C:\Users\user\source\repos\pruebaOpentk\pruebaOpentk\obj\Debug\pruebaOpentk.pdb
