@@ -88,9 +88,9 @@ class TrapezoidWindow : GameWindow
 
         //frontal 
         GL.Color3(0.0f, 0.0f, 0.0f);
+        
         GL.Vertex3(-0.7f, -1f, -0.1f);
         GL.Vertex3(0.7f, -1f, -0.1f); 
-
         GL.Vertex3(0.7f, 0.1f, -0.1f);
         GL.Vertex3(-0.7f, 0.1f, -0.1f); 
 
