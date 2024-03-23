@@ -1,41 +1,118 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 
-namespace pruebaOpentk
+class TrapezoidWindow : GameWindow
 {
-    class prueba
+    public TrapezoidWindow() : base(800, 600, GraphicsMode.Default, "Trapezoid 3D")
     {
-        static void Main(string[] args)
+    }
+
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
+        GL.ClearColor(Color4.White);
+
+        GL.Enable(EnableCap.DepthTest);
+        GL.DepthFunc(DepthFunction.Less);
+
+        GL.MatrixMode(MatrixMode.Projection);
+        Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI / 4, Width / (float)Height, 0.1f, 100.0f);
+        GL.LoadMatrix(ref perspective);
+    }
+
+    protected override void OnRenderFrame(FrameEventArgs e)
+    {
+        base.OnRenderFrame(e);
+        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+        GL.MatrixMode(MatrixMode.Modelview);
+        Matrix4 view = Matrix4.LookAt(new Vector3(0,-3,6), Vector3.Zero, Vector3.UnitY);
+        GL.LoadMatrix(ref view);
+
+        // Dibujar el trapecio
+        GL.Begin(PrimitiveType.Quads);
+
+        GL.Color3(0.5f, 0.5f, 0.5f); // Color gris (plomo)
+
+        GL.Vertex3(-0.7f, 0.1f, -0.1f);  // Esquina inferior izquierda
+        GL.Vertex3(0.7f, 0.1f, -0.1f); // Esquina inferior derecha
+        GL.Vertex3(0.7f, 0.1f, 0.1f);  // Esquina superior derecha
+        GL.Vertex3(-0.7f, 0.1f, 0.1f);   // Esquina superior izquierda
+
+
+        GL.Color3(0.5f, 0.5f, 0.5f); // Color gris (plomo)
+
+        GL.Vertex3(-0.7f, -1f, -0.1f); // Esquina inferior izquierda
+        GL.Vertex3(-0.2f, -1f, -0.1f);  // Esquina inferior derecha
+        GL.Vertex3(-0.2f, -1f, 0.1f);   // Esquina superior derecha
+        GL.Vertex3(-0.7f, -1f, 0.1f);  // Esquina superior izquierda
+
+        GL.Color3(0.0f, 0.0f, 0.0f);
+
+        GL.Vertex3(-0.2f, -1f, 0.1f);  // Esquina superior izquierda
+        GL.Vertex3(0.1f, -1f, 0.1f);   // Esquina superior derecha
+        GL.Vertex3(0.1f, -1.1f, -0.1f);  // Esquina inferior derecha
+        GL.Vertex3(-0.2f, -1.1f, -0.1f); // Esquina inferior izquierda
+
+        GL.Color3(0.5f, 0.5f, 0.5f); // Color gris (plomo)
+
+        GL.Vertex3(0.1f, -1f, -0.1f); // Esquina inferior izquierda
+        GL.Vertex3(0.7f, -1f, -0.1f);  // Esquina inferior derecha
+        GL.Vertex3(0.7f, -1f, 0.1f);   // Esquina superior derecha
+        GL.Vertex3(0.1f, -1f, 0.1f);  // Esquina superior izquierda
+
+        GL.Color3(0.5f, 0.5f, 0.5f); // Color gris (plomo)
+        // Lateral derecho de la caja
+        GL.Vertex3(0.7f, -1f, -0.1f); // Esquina inferior derecha
+        GL.Vertex3(0.7f, -1f, 0.1f);  // Esquina superior derecha
+        GL.Vertex3(0.7f, -1f, 0.1f);   // Esquina superior izquierda
+        GL.Vertex3(0.7f, -1f, -0.1f);  // Esquina inferior izquierda
+
+        // Lateral izquierdo de la caja
+        GL.Color3(0.5f, 0.5f, 0.5f); // Color gris (plomo)
+
+        GL.Vertex3(0.7f, -1f, -0.1f); // Esquina inferior derecha
+        GL.Vertex3(0.7f, -1f, 0.1f);  // Esquina superior derecha
+        GL.Vertex3(0.7f, 0.1f, 0.1f);   // Esquina superior izquierda
+        GL.Vertex3(0.7f, 0.1f, -0.1f);  // Esquina inferior izquierda
+                                        //GL.Color3(0.0f, 0.0f, 1.0f); // Color azul
+
+        // Lateral derecho de la caja
+        GL.Vertex3(-0.7f, 0.1f, -0.1f);  // Esquina inferior derecha
+        GL.Vertex3(-0.7f, 0.1f, 0.1f);   // Esquina superior derecha  
+        GL.Vertex3(-0.7f, -1f, 0.1f); // Esquina superior izquierda
+        GL.Vertex3(-0.7f, -1f, -0.1f); // Esquina inferior izquierda
+
+
+        //frontal 
+        GL.Color3(0.0f, 0.0f, 0.0f);
+        GL.Vertex3(-0.7f, -1f, -0.1f);
+        GL.Vertex3(0.7f, -1f, -0.1f); 
+
+        GL.Vertex3(0.7f, 0.1f, -0.1f);
+        GL.Vertex3(-0.7f, 0.1f, -0.1f); 
+
+
+
+
+
+
+
+        GL.End();
+
+        SwapBuffers();
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        using (var window = new TrapezoidWindow())
         {
-            using (var game = new GameWindow())
-            {
-                game.Load += (sender, e) =>
-                {
-                    GL.ClearColor(0.1f, 0.2f, 0.5f, 0.0f);
-                };
-
-                game.Resize += (sender, e) =>
-                {
-                    GL.Viewport(0, 0, game.Width, game.Height);
-                };
-
-                game.RenderFrame += (sender, e) =>
-                {
-                    GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-                    // Aquí va tu código de renderizado
-
-                    game.SwapBuffers();
-                };
-
-                game.Run(60.0);
-            }
+            window.Run(60.0);
         }
     }
 }
